@@ -1,6 +1,6 @@
-package servlet;
+package servlets;
 
-import entity.Entity;
+import crud.Lab2CrudInterface;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,17 +12,25 @@ import java.io.PrintWriter;
 
 
 @WebServlet("/Serlvet1")
-public class Serlvet1 extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-        Entity entity = new Entity("Entity1", 18, 1.81f);
-        out.println("["+entity+"]");
+public class EntityServlet1 extends HttpServlet {
+
+    ServletConfigInterface servletConfig;
+    Lab2CrudInterface lab2Crud;
+
+    public EntityServlet1() {
+        super();
+        this.servletConfig = new ServletConfig();
+        this.lab2Crud = servletConfig.getCrud();
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+        out.println("["+ lab2Crud.readEntity()+"]");
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }
