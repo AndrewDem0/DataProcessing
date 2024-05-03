@@ -1,6 +1,7 @@
 package servlets;
 
 import crud.Lab2CrudInterface;
+import entity.Entity;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -31,6 +32,12 @@ public class EntityServlet1 extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        String title = request.getParameter("title");
+        int age = Integer.parseInt(request.getParameter("age"));
+        float width = Float.parseFloat(request.getParameter("width"));
+
+        lab2Crud.updateEntity(new Entity(title,age,width));
 
     }
 }
