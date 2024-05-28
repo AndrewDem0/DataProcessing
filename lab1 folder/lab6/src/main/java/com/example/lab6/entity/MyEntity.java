@@ -13,7 +13,7 @@ public class MyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private String name;
-    private int age;
+    private String description;
+    private String img;
 }
