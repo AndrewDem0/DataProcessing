@@ -1,21 +1,22 @@
-<h2>{{title}}</h2>
+<h2>{{ title }}</h2>
 <ul>
-  <li
-  *ngFor="let u of usersList"
-  (click)="onSelect(u)"
-  >{{u.id}}.{{u.name}} age:{{u.age}}
-<span (click)="deleteUser(u)"> X </span>
-</li>
+  <li *ngFor="let bronik of bronikList" (click)="onSelect(bronik)">
+    {{ bronik.id }}. {{ bronik.name }} | {{ bronik.protectionclass }} | {{ bronik.description }}
+    <span (click)="deleteBronik(bronik)"> X </span>
+  </li>
 </ul>
 
-<h3 (click)="showAddForm=!showAddForm">Add User</h3>
-<form *ngIf="showAddForm" #form1="ngForm" (ngSubmit)="addUser(form1.value)">
-  <input type="hidden" name="id" [ngModel]="1" readonly>
-  <input type="text" name="name" ngModel><br><br>
-  <input type="number" name="age" ngModel=23><br><br>
-  <input type="submit" value="Add User">
+<h3 (click)="showAddForm = !showAddForm">Add Bronik</h3>
+<form *ngIf="showAddForm" #form1="ngForm" (ngSubmit)="addBronik(form1.value)">
+  <input type="text" name="name" placeholder="Name" ngModel required><br><br>
+  <input type="text" name="protectionclass" placeholder="Protection Class" ngModel required><br><br>
+  <textarea name="description" placeholder="Description" ngModel required></textarea><br><br>
+  <input type="text" name="imageUrl" placeholder="Image URL" ngModel><br><br>
+  <input type="number" name="number" placeholder="Number" ngModel required><br><br>
+  <input type="text" name="status" placeholder="Status" ngModel required><br><br>
+  <input type="submit" value="Add Bronik">
 </form>
-<div>
-  <app-update [user]="selectedUser" (updated)="updateUsers()"></app-update>
-</div>
 
+<div>
+  <app-update [bronik]="selectedBronik" (updated)="updateBroniks()"></app-update>
+</div>

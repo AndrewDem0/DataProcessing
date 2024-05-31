@@ -1,8 +1,13 @@
-<div *ngIf="user">
-<h3> Update User</h3>
-
-<input type="hidden" [(ngModel)]="user.id">
-<input type="text" [(ngModel)]="user.name"><br><br>
-<input type="number" [(ngModel)]="user.age"><br><br>
-<button (click)="updateUser()">Update user </button>
-</div>
+<div *ngIf="bronik">
+    <h3> Update Bronik</h3>
+  
+    <input type="hidden" [(ngModel)]="bronik.id">
+    <input type="text" [(ngModel)]="bronik.name" placeholder="Name"><br><br>
+    <input type="text" [(ngModel)]="bronik.protectionclass" placeholder="Protection Class"><br><br>
+    <textarea [(ngModel)]="bronik.description" placeholder="Description"></textarea><br><br>
+    <input type="text" [(ngModel)]="bronik.imageUrl" placeholder="Image URL"><br><br>
+    <input type="number" [(ngModel)]="bronik.number" placeholder="Number"><br><br>
+    <input type="text" [(ngModel)]="bronik.status" placeholder="Status"><br><br>
+    <button (click)="updateBronik()">Update Bronik</button>
+  </div>
+  

@@ -1,57 +1,56 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from '../interfaces/user';
-import { UserService } from '../services/user.service';
+import { Bronik } from '../interfaces/Bronik';
+import { BronikService } from '../services/bronik.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrl: './list.component.scss'
+  styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  title: string = "List of Broniks";
+  bronikList: Bronik[] = [];
+  showAddForm: boolean = false;
+  selectedBronik?: Bronik;
 
-title:string="List of users";
-usersList:IUser[]=[];
-showAddForm:boolean=false;
-selectedUser?:IUser;
+  constructor(private service: BronikService) {}
 
-constructor(private service:UserService) {}
-
-ngOnInit(): void{
-  this.updateUsers();
-  this.service.list.subscribe(
-    (list:IUser[])=>{this.usersList=list}
-  );
-}
-updateUsers(){
-  this.service.getUsers().subscribe(
-    (users)=>{
-    this.usersList=users;
+  ngOnInit(): void {
+    this.updateBroniks();
+    this.service.list.subscribe(
+      (list: Bronik[]) => { this.bronikList = list; }
+    );
   }
-  );
-}
 
-addUser(user:IUser){
-  this.service.postUser(user).subscribe(
-    (user)=>{
-    //console.log(user);
-    this.updateUsers();
+  updateBroniks() {
+    this.service.getBroniks().subscribe(
+      (broniks) => {
+        this.bronikList = broniks;
+      }
+    );
   }
-  );
-}
 
-onSelect(user:IUser){
-  if(this.selectedUser && user.id==this.selectedUser.id){
-    this.selectedUser=undefined;
-  }else{
-    this.selectedUser=user;
+  addBronik(bronik: Bronik) {
+    this.service.postBronik(bronik).subscribe(
+      (bronik) => {
+        this.updateBroniks();
+      }
+    );
   }
-}
 
-deleteUser(user:IUser){
-  this.service.deleteUser(user).subscribe(
-    ()=>{
-    this.updateUsers();
+  onSelect(bronik: Bronik) {
+    if (this.selectedBronik && bronik.id === this.selectedBronik.id) {
+      this.selectedBronik = undefined;
+    } else {
+      this.selectedBronik = bronik;
+    }
   }
-  );
-}
+
+  deleteBronik(bronik: Bronik) {
+    this.service.deleteBronik(bronik).subscribe(
+      () => {
+        this.updateBroniks();
+      }
+    );
+  }
 }

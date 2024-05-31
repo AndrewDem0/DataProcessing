@@ -1,28 +1,27 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IUser } from '../interfaces/user';
-import { UserService } from '../services/user.service';
-
+import { Bronik } from '../interfaces/Bronik';
+import { BronikService } from '../services/bronik.service';
 
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
-  styleUrl: './update.component.scss'
+  styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent implements OnInit {
-@Input() user?:IUser
-@Output() updated:EventEmitter<null>=new EventEmitter();
+  @Input() bronik?: Bronik;
+  @Output() updated: EventEmitter<null> = new EventEmitter();
 
-constructor(private service:UserService){}
+  constructor(private service: BronikService) {}
 
-ngOnInit(): void{
-  }
-  updateUser(){
-    if(this.user)
-    this.service.putUser(this.user).subscribe(
-      ()=>{
-        this.updated.emit();
+  ngOnInit(): void {}
+
+  updateBronik() {
+    if (this.bronik) {
+      this.service.putBronik(this.bronik).subscribe(
+        () => {
+          this.updated.emit();
         }
-    );
+      );
+    }
   }
-
 }
