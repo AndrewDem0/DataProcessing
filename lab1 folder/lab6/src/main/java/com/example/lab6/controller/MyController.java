@@ -1,6 +1,6 @@
 package com.example.lab6.controller;
 
-import com.example.lab6.entity.MyEntity;
+import com.example.lab6.entity.Broniks;
 import com.example.lab6.repos.MyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,7 @@ import org.springframework.web.client.ResourceAccessException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/lab6/api/my_entity")
+@RequestMapping("/lab6/api/Broniks")
 public class MyController {
 
     @Autowired
@@ -18,19 +18,19 @@ public class MyController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public MyEntity postEntity(@RequestBody MyEntity myEntity) {
-        return myRepository.save(myEntity);
+    public Broniks postEntity(@RequestBody Broniks broniks) {
+        return myRepository.save(broniks);
     }
 
     @GetMapping("/retrieve")
-    public List<MyEntity> getEntities() {
+    public List<Broniks> getEntities() {
         return myRepository.findAll();
     }
 
     @PutMapping("/update/{id}")
-    public MyEntity putEntity(@PathVariable long id, @RequestBody MyEntity newEntity) {
-        MyEntity updatedEntity = myRepository.findById(id)
-                .orElseThrow(() -> new ResourceAccessException("Not found MyEntity with id: " + id));
+    public Broniks putEntity(@PathVariable long id, @RequestBody Broniks newEntity) {
+        Broniks updatedEntity = myRepository.findById(id)
+                .orElseThrow(() -> new ResourceAccessException("Not found Broniks with id: " + id));
         updatedEntity.setName(newEntity.getName());
         updatedEntity.setDescription(newEntity.getDescription());
         updatedEntity.setImg(newEntity.getImg());
@@ -41,7 +41,7 @@ public class MyController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteEntity(@PathVariable long id) {
         if (!myRepository.existsById(id)) {
-            throw new ResourceAccessException("Not found MyEntity with id: " + id);
+            throw new ResourceAccessException("Not found Broniks with id: " + id);
         }
         myRepository.deleteById(id);
     }
