@@ -3,7 +3,7 @@ export interface Bronik {
   name: string;
   protectionclass: string;
   description: string;
-  imageUrl?: string;
+  img?: string;
   number: number;
   status: string;
 }

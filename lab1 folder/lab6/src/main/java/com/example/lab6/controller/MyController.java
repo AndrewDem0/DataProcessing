@@ -10,24 +10,25 @@ import org.springframework.web.client.ResourceAccessException;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/lab6/api/Broniks")
 public class MyController {
 
     @Autowired
     MyRepository myRepository;
 
-    @PostMapping("/create")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public Broniks postEntity(@RequestBody Broniks broniks) {
         return myRepository.save(broniks);
     }
 
-    @GetMapping("/retrieve")
+    @GetMapping("")
     public List<Broniks> getEntities() {
         return myRepository.findAll();
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public Broniks putEntity(@PathVariable long id, @RequestBody Broniks newEntity) {
         Broniks updatedEntity = myRepository.findById(id)
                 .orElseThrow(() -> new ResourceAccessException("Not found Broniks with id: " + id));
@@ -37,7 +38,7 @@ public class MyController {
         return myRepository.save(updatedEntity);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteEntity(@PathVariable long id) {
         if (!myRepository.existsById(id)) {
