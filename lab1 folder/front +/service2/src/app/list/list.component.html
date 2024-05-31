@@ -1,8 +1,8 @@
 <h2>{{ title }}</h2>
 <ul>
   <li *ngFor="let bronik of bronikList">
-    {{ bronik.id }}. {{ bronik.name }} | {{ bronik.protectionclass }} | {{ bronik.description }}
-    <!-- <span (click)="deleteBronik(bronik)"> X </span> -->
+    {{ bronik.name }} | {{ bronik.protectionclass }} | {{ bronik.description }}
+    | <img [src]="bronik.img" alt="Bronik Image"> | {{ bronik.number }} | {{ bronik.status }}
     <button (click)="deleteBronik(bronik)">del</button><button (click)="onSelect(bronik)">edit</button>
   </li>
 </ul>
@@ -12,7 +12,7 @@
   <input type="text" name="name" placeholder="Name" ngModel required><br><br>
   <input type="text" name="protectionclass" placeholder="Protection Class" ngModel required><br><br>
   <textarea name="description" placeholder="Description" ngModel required></textarea><br><br>
-  <input type="text" name="imageUrl" placeholder="Image URL" ngModel><br><br>
+  <input type="text" name="img" placeholder="Image URL" ngModel><br><br>
   <input type="number" name="number" placeholder="Number" ngModel required><br><br>
   <input type="text" name="status" placeholder="Status" ngModel required><br><br>
   <input type="submit" value="Add Bronik">

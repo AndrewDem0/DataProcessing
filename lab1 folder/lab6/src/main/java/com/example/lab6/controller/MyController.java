@@ -33,8 +33,11 @@ public class MyController {
         Broniks updatedEntity = myRepository.findById(id)
                 .orElseThrow(() -> new ResourceAccessException("Not found Broniks with id: " + id));
         updatedEntity.setName(newEntity.getName());
+        updatedEntity.setProtectionclass(newEntity.getProtectionclass());
         updatedEntity.setDescription(newEntity.getDescription());
         updatedEntity.setImg(newEntity.getImg());
+        updatedEntity.setNumber(newEntity.getNumber());
+        updatedEntity.setStatus(newEntity.getStatus());
         return myRepository.save(updatedEntity);
     }
 
