@@ -1,21 +1,31 @@
-<h2>{{ title }}</h2>
-<ul>
-  <li *ngFor="let bronik of bronikList">
-    {{ bronik.name }} | {{ bronik.protectionclass }} | {{ bronik.description }}
-    | <img [src]="bronik.img" alt="Bronik Image"> | {{ bronik.number }} | {{ bronik.status }}
-    <button (click)="deleteBronik(bronik)">del</button><button (click)="onSelect(bronik)">edit</button>
-  </li>
-</ul>
+<h2 style="color: rgb(255, 255, 255);">{{ title }}</h2>
+<div class="grid-container">
+  <ul>
+    <li class="grid-item" *ngFor="let bronik of bronikList">
+      <img [src]="bronik.img" alt="Bronik Image">
+      <div>Name: {{ bronik.name }}</div>
+      <div>Protection Class: {{ bronik.protectionclass }}</div>
+      <div>Description: {{ bronik.description }}</div>
+      <div>Number: {{ bronik.number }}</div>
+      <div>Status: {{ bronik.status }}</div>
+      <button style="background-color: red;" (click)="deleteBronik(bronik)">Delete</button>
+      <button style="background-color: rgb(170, 219, 23);" (click)="onSelect(bronik)">Edit</button>
+    </li>
+  </ul>
+</div>
 
-<h3 (click)="showAddForm = !showAddForm">Add Bronik</h3>
-<form *ngIf="showAddForm" #form1="ngForm" (ngSubmit)="addBronik(form1.value)">
+<button class="add-button" (click)="showAddForm = !showAddForm">Add Bronik</button>
+<form *ngIf="showAddForm" #form1="ngForm" (ngSubmit)="addBronik(form1.value)" class="bronik-form">
   <input type="text" name="name" placeholder="Name" ngModel required><br><br>
   <input type="text" name="protectionclass" placeholder="Protection Class" ngModel required><br><br>
   <textarea name="description" placeholder="Description" ngModel required></textarea><br><br>
   <input type="text" name="img" placeholder="Image URL" ngModel><br><br>
   <input type="number" name="number" placeholder="Number" ngModel required><br><br>
-  <input type="text" name="status" placeholder="Status" ngModel required><br><br>
-  <input type="submit" value="Add Bronik">
+  <select name="status" ngModel required>
+    <option value="available">Available</option>
+    <option value="not">Not Available</option>
+  </select><br><br>
+  <button type="submit">Add Bronik</button>
 </form>
 
 <div>

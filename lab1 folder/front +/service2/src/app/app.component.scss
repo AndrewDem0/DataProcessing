@@ -1,22 +1,45 @@
+/* main.css */
+
+/* Стилі для контейнера */
 .container {
-    margin: 10px;
-    background-color: #483C32; /* Колір камуфляжу (піксель) */
-    color: #FFFFFF; /* Білий текст */
-    font-family: Arial, sans-serif; /* Шрифт Arial або інший санс-сериф шрифт */
-    padding: 10px; /* Відступ всередині контейнера */
+  background-image: url(https://tk.ua/media/cache/resolve/products_large/uploads/images/products/dAizGdOsMcEV2Z0jd1NynQ.jpg);
+  padding: 0px;
+  border-radius: 5px;
+  color: #000000;
+  background-size: cover;
+  background-attachment: fixed; /* Додано background-attachment: fixed */
 }
 
+/* Стилі для верхньої та нижньої меж */
 .top-border, .bottom-border {
-    text-align: center;
-    font-size: 1.5em;
-    font-weight: bold;
-    padding: 10px 10px; /* Відступи від тексту до верхньої та нижньої рамки */
-    background-color: #483C32; /* Колір камуфляжу (піксель) */
-    background-image: url('https://avtoplenki.ua/images/product_images/info_images/5966_0.jpg'); /* Замініть 'link_to_your_pixel_image' на посилання на ваше зображення пікселя */
+  border-bottom: 2px solid #bdc3c7;
+  padding-bottom: 40px;
+  padding-top: 40px;
+  margin-bottom: 20px;
+  background-image: url(https://avtoplenki.ua/images/product_images/info_images/5966_0.jpg);
+  text-align: center;
 }
 
-.bottom-border {
-    border-top: 0px solid white; /* Біла рамка зверху */
-    text-align: center;
-    border-top: 0px solid white; /* Біла рамка зверху */
+/* Стилі для заголовка */
+h1 {
+  color: #ffffff;
+  text-align: center;
+  font-size: 4em;
+}
+
+
+/* Стилі для контактної інформації */
+.bottom-border p {
+  margin: 5px 0;
+  color: #ffffff;
+}
+
+/* Стилі для вкладених рядочків */
+.router-outlet, app-list {
+  margin-top: 20px;
+}
+
+/* Стилі для зображень в списку */
+app-list img {
+  max-width: 200px;
 }

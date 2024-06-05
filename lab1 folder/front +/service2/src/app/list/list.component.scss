@@ -1,12 +1,194 @@
-ul{
-  list-style:none;
+/* bronik-list.css */
+
+/* Стилі для елементів списку */
+li {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #ecf0f1;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* додаємо тінь для виділення */
+  width: calc(25% - 10px); /* Розташування по 4 елементи в ряду з врахуванням відступів */
+  display: inline-block; /* Розміщення в ряд */
+  vertical-align: top; /* Вирівнюємо по верху */
+  margin-right: 20px; /* Відступ між елементами */
 }
-li{
-  padding: 5px;
+
+/* Останній елемент у ряду не повинен мати правий відступ */
+li:nth-child(4n) {
+  margin-right: 0;
 }
-span{
-  color:white;
-  background-color: red;
-  padding: 2px;
-  margin-left: 5px;
+
+/* Стилі для кнопок Delete та Edit */
+li button {
+  margin-right: 5px; /* Відступ між кнопками */
+}
+
+/* Стилі для зображень */
+img {
+  max-width: 400px; /* Збільшуємо максимальну ширину зображення */
+  height: auto;
+  display: block; /* Вирівнюємо по центру */
+  margin: 0 auto 10px; /* Зміщуємо у центрі та додаємо простір між зображенням та текстом */
+}
+
+/* Стилі для кнопок */
+button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px; /* Зміщуємо кнопки вниз */
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* Стилі для форми додавання */
+form {
+  margin-top: 20px;
+}
+
+/* Стилі для контейнера сітки */
+.grid-container ul {
+  display: flex;
+  flex-wrap: wrap; /* Автоматичний перенос на новий рядок при потребі */
+  padding: 0;
+  margin: 0;
+  list-style-type: none; /* Прибираємо маркери списку */
+}
+
+/* Стилі для елементів сітки */
+.grid-item {
+  background-color: #ecf0f1;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Тінь для карточки */
+  padding: 10px; /* Відступ всередині карточки */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Вирівнюємо контент по центру */
+  flex: 1 1 calc(25% - 20px); /* Ширина картки */
+  margin: 10px; /* Відстань між картками */
+  box-sizing: border-box; /* Урахування padding та border в ширину та висоту елемента */
+}
+
+.grid-item img {
+  max-width: 100%; /* Зображення вписується в розмір контейнера */
+  height: auto; /* Автоматична висота */
+  display: block;
+  margin: 0 auto 10px; /* Вирівнюємо по центру */
+}
+
+/* Стилі для кнопок */
+.grid-item button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px; /* Відступ від верхньої границі карточки для кнопок */
+  margin-right: 5px; /* Відступ між кнопками */
+}
+
+.grid-item button:hover {
+  background-color: #2980b9;
+}
+
+/* Стилі для заголовків */
+h2 {
+  color: #ffffff;
+  text-align: center;
+}
+
+h3 {
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Стилі для опису бронежилета */
+.grid-item div {
+  color: #333;
+  margin-top: 5px;
+}
+
+/* Стилі для форми додавання */
+form {
+  margin-top: 20px;
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 1200px) {
+  .grid-item {
+    flex: 1 1 calc(33.333% - 20px); /* 3 стовпці на середніх екранах */
+  }
+}
+
+@media (max-width: 800px) {
+  .grid-item {
+    flex: 1 1 calc(50% - 20px); /* 2 стовпці на малих екранах */
+  }
+}
+
+@media (max-width: 500px) {
+  .grid-item {
+    flex: 1 1 100%; /* 1 стовпець на дуже малих екранах */
+  }
+}
+
+
+
+
+
+.bronik-form {
+  background-color: #ffffff;
+  width: 100%; /* Ширина форми на весь екран */
+  padding: 20px;
+  border-radius: 5px;
+  color: #3f82b1;
+  margin: 0 auto;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Враховуємо padding у ширину */
+}
+
+@media (max-width: 1200px) {
+  .bronik-form {
+    width: 90%; /* Зменшуємо ширину на середніх екранах */
+  }
+}
+
+@media (max-width: 800px) {
+  .bronik-form {
+    width: 100%; /* Повна ширина на малих екранах */
+  }
+}
+
+input[type="text"],
+textarea,
+input[type="number"] {
+  width: calc(100% - 20px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 3px;
+  box-sizing: border-box; /* Враховуємо padding у ширину */
+}
+
+.add-button {
+  width: 450px; /* Фіксована ширина кнопки */
+  background-color: #2372a8;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 20px auto; /* Центруємо кнопку */
+  display: block;
+  text-align: center;
+}
+
+.add-button:hover {
+  background-color: #2980b9;
 }
